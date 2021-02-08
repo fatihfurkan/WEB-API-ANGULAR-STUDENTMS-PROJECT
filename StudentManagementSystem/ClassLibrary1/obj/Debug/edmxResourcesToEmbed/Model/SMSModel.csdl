@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="StudentMSEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="COURSEs" EntityType="StudentMSModel.COURSE" />
+    <EntitySet Name="ROLEs" EntityType="StudentMSModel.ROLE" />
+    <EntitySet Name="TEACHER_COURSE_DETAIL" EntityType="StudentMSModel.TEACHER_COURSE_DETAIL" />
+    <EntitySet Name="USERs" EntityType="StudentMSModel.USER" />
+    <EntitySet Name="USER_COURSE" EntityType="StudentMSModel.USER_COURSE" />
+    <FunctionImport Name="GetCourseUserDetail" ReturnType="Collection(StudentMSModel.GetCourseUserDetail_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCourseContent" ReturnType="Collection(StudentMSModel.GetCourseContent_Result)">
+      <Parameter Name="COURSEID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserInfo" ReturnType="Collection(StudentMSModel.GetUserInfo_Result)">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="COURSE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FEES" Type="Int32" />
+    <Property Name="DURATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ROLENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ROLECODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEACHER_COURSE_DETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="COURSEID" Type="Guid" />
+    <Property Name="USERID" Type="Guid" />
+    <Property Name="CONTENTDETAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LINK" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="IDNUMBER" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATIONDATE" Type="DateTime" Precision="3" />
+    <Property Name="ROLEREF" Type="Guid" />
+  </EntityType>
+  <EntityType Name="USER_COURSE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="USERID" Type="Guid" />
+    <Property Name="COURSEID" Type="Guid" />
+  </EntityType>
+  <ComplexType Name="GetCourseUserDetail_Result">
+    <Property Type="String" Name="NAME" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="COURSENAME" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ROLENAME" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="GetCourseContent_Result">
+    <Property Type="String" Name="COURSENAME" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="CONTENTDETAIL" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="LINK" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="GetUserInfo_Result">
+    <Property Type="Guid" Name="USERID" Nullable="false" />
+    <Property Type="String" Name="NAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="SURNAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="PHONE" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CREATIONDATE" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="ROLEREF" Nullable="true" />
+    <Property Type="String" Name="ROLENAME" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ROLECODE" Nullable="true" MaxLength="1" />
+  </ComplexType>
+</Schema>

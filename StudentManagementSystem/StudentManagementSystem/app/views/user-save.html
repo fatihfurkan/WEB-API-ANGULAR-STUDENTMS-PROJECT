@@ -1,0 +1,145 @@
+﻿
+<div ng-controller="userCntrl" class="container-fluid">
+
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+    <!-- START panel-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="panel-heading"></div>
+            <form-wizard action="/" method="POST">
+                <div class="form-wizard wizard-horizontal">
+                    <!-- START wizard steps indicator-->
+                    <ol class="row">
+                        <li class="col-sm-6">
+                            <h4>Kullanıcı Kayıt</h4>
+                        </li>
+                        <li class="col-sm-6">
+                            <h4>Ders Kayıt</h4>
+                        </li>
+                    </ol>
+                    <!-- END wizard steps indicator-->
+                    <!-- START Wizard Step inputs -->
+                    <div>
+
+                        <fieldset>
+                            <div class="col-sm-3"></div>
+
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"></div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" validate-form="" novalidate="">
+
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Adı</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.NAME" type="text" required="required" placeholder="Adı" class="form-control" data-parsley-error-message="Lütfen Adınızı Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Soyadı</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.SURNAME" type="text" required="required" placeholder="Soyadı" class="form-control" data-parsley-error-message="Lütfen Soyadınızı Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Öğrenci Numarası</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.IDNUMBER" type="number" placeholder="Öğrenci Numarası" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Telefon</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.PHONE" type="text" masked="" required="required" data-inputmask="'mask': '(999) 999-99-99'" placeholder="Telefon" class="form-control" data-parsley-error-message="Lütfen Telefon Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Adres</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.ADDRESS" type="text" required="required" placeholder="Adres" class="form-control" data-parsley-error-message="Lütfen Adres Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Email</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.EMAIL" type="email" required="required" placeholder="Email" class="form-control" data-parsley-error-message="Lütfen Mailinizi Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Şifre</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="user.PASSWORD" type="password" name="password" required="required" placeholder="Şifre" class="form-control" data-parsley-error-message="Lütfen Şifre Giriniz." />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Rol</label>
+                                                <div class="col-lg-10">
+                                                    <select ng-model="user.ROLEREF" class="form-control" ng-options="item.ID as item.ROLENAME for item in Roles" required="required" data-parsley-error-message="Lütfen Rol Seçiniz.">
+                                                        <option value="">Rol Seçiniz</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <button type="submit" class="btn btn-sm btn-green" ng-click="save_user(user)">Kaydet</button>
+
+                                            </div>
+                                        </form>
+                                        <!--<pre>Student = {{List | json}}</pre>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </fieldset>
+                    </div>
+
+
+                    <div>
+
+                        <fieldset>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"></div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" validate-form="" novalidate="">
+
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Ders Adı</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="course.NAME" type="text" required="required" placeholder="Ders Adı" class="form-control" data-parsley-error-message="Lütfen Ders Adı Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Ücret</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="course.FEES" type="number" required="required" placeholder="Ücret" class="form-control" data-parsley-error-message="Lütfen Ücret Giriniz." />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Süre</label>
+                                                <div class="col-lg-10">
+                                                    <input ng-model="course.DURATION" type="text" required="required" placeholder="Süre" class="form-control" data-parsley-error-message="Lütfen Süre Giriniz." />
+                                                </div>
+                                            </div>
+                                          
+                                            <div class="panel-footer">
+                                                <button type="submit" class="btn btn-sm btn-green" ng-click="save_course(course)">Kaydet</button>
+
+                                            </div>
+                                        </form>
+                                        <!--<pre>Student = {{List | json}}</pre>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </fieldset>
+                    </div>
+
+                </div>
+            </form-wizard>
+        </div>
+    </div>
+</div>

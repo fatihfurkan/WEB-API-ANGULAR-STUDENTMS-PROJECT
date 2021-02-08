@@ -1,0 +1,12 @@
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\SMS.Database.dll.config
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\SMS.Database.dll
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\SMS.Database.pdb
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\EntityFramework.dll
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\EntityFramework.xml
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\obj\Debug\SMS.Database.csprojAssemblyReference.cache
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\obj\Debug\SMS.Database.csproj.CoreCompileInputs.cache
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\obj\Debug\SMS.Database.csproj.CopyComplete
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\obj\Debug\SMS.Database.dll
+C:\Users\Fatih Furkan Icel\source\repos\StudentManagementSystem\ClassLibrary1\obj\Debug\SMS.Database.pdb

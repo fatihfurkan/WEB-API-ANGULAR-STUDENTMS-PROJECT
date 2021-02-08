@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="500" />
+          <Property Name="FEES" Type="int" />
+          <Property Name="DURATION" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="500" />
+          <Property Name="ROLECODE" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TEACHER_COURSE_DETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="COURSEID" Type="uniqueidentifier" />
+          <Property Name="USERID" Type="uniqueidentifier" />
+          <Property Name="CONTENTDETAIL" Type="varchar(max)" />
+          <Property Name="LINK" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDNUMBER" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="500" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="500" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="500" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="500" />
+          <Property Name="PHONE" Type="varchar" MaxLength="500" />
+          <Property Name="CREATIONDATE" Type="datetime" />
+          <Property Name="ROLEREF" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="USER_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="USERID" Type="uniqueidentifier" />
+          <Property Name="COURSEID" Type="uniqueidentifier" />
+        </EntityType>
+        <Function Name="GetCourseContent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COURSEID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="GetCourseUserDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COURSEID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="StudentMSModelStoreContainer">
+          <EntitySet Name="COURSE" EntityType="Self.COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEACHER_COURSE_DETAIL" EntityType="Self.TEACHER_COURSE_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_COURSE" EntityType="Self.USER_COURSE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StudentMSEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COURSEs" EntityType="StudentMSModel.COURSE" />
+          <EntitySet Name="ROLEs" EntityType="StudentMSModel.ROLE" />
+          <EntitySet Name="TEACHER_COURSE_DETAIL" EntityType="StudentMSModel.TEACHER_COURSE_DETAIL" />
+          <EntitySet Name="USERs" EntityType="StudentMSModel.USER" />
+          <EntitySet Name="USER_COURSE" EntityType="StudentMSModel.USER_COURSE" />
+          <FunctionImport Name="GetCourseUserDetail" ReturnType="Collection(StudentMSModel.GetCourseUserDetail_Result)">
+          <Parameter Name="COURSEID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetCourseContent" ReturnType="Collection(StudentMSModel.GetCourseContent_Result)">
+          <Parameter Name="COURSEID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserInfo" ReturnType="Collection(StudentMSModel.GetUserInfo_Result)">
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FEES" Type="Int32" />
+          <Property Name="DURATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ROLENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ROLECODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TEACHER_COURSE_DETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="COURSEID" Type="Guid" />
+          <Property Name="USERID" Type="Guid" />
+          <Property Name="CONTENTDETAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LINK" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="IDNUMBER" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CREATIONDATE" Type="DateTime" Precision="3" />
+          <Property Name="ROLEREF" Type="Guid" />
+        </EntityType>
+        <EntityType Name="USER_COURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="USERID" Type="Guid" />
+          <Property Name="COURSEID" Type="Guid" />
+        </EntityType>
+        <ComplexType Name="GetCourseUserDetail_Result">
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="COURSENAME" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="ROLENAME" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="GetCourseContent_Result">
+          <Property Type="String" Name="COURSENAME" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="CONTENTDETAIL" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="LINK" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="GetUserInfo_Result">
+          <Property Type="Guid" Name="USERID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SURNAME" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="PHONE" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="CREATIONDATE" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="ROLEREF" Nullable="true" />
+          <Property Type="String" Name="ROLENAME" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ROLECODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentMSModelStoreContainer" CdmEntityContainer="StudentMSEntities1">
+        <EntitySetMapping Name="COURSEs">
+            <EntityTypeMapping TypeName="StudentMSModel.COURSE">
+              <MappingFragment StoreEntitySet="COURSE">
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="FEES" ColumnName="FEES" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEs">
+            <EntityTypeMapping TypeName="StudentMSModel.ROLE">
+              <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="ROLECODE" ColumnName="ROLECODE" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEACHER_COURSE_DETAIL">
+            <EntityTypeMapping TypeName="StudentMSModel.TEACHER_COURSE_DETAIL">
+              <MappingFragment StoreEntitySet="TEACHER_COURSE_DETAIL">
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="CONTENTDETAIL" ColumnName="CONTENTDETAIL" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="StudentMSModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="ROLEREF" ColumnName="ROLEREF" />
+                <ScalarProperty Name="CREATIONDATE" ColumnName="CREATIONDATE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IDNUMBER" ColumnName="IDNUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_COURSE">
+            <EntityTypeMapping TypeName="StudentMSModel.USER_COURSE">
+              <MappingFragment StoreEntitySet="USER_COURSE">
+                <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCourseUserDetail" FunctionName="StudentMSModel.Store.GetCourseUserDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentMSModel.GetCourseUserDetail_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCourseContent" FunctionName="StudentMSModel.Store.GetCourseContent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentMSModel.GetCourseContent_Result">
+                <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+                <ScalarProperty Name="CONTENTDETAIL" ColumnName="CONTENTDETAIL" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserInfo" FunctionName="StudentMSModel.Store.GetUserInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentMSModel.GetUserInfo_Result">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CREATIONDATE" ColumnName="CREATIONDATE" />
+                <ScalarProperty Name="ROLEREF" ColumnName="ROLEREF" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+                <ScalarProperty Name="ROLECODE" ColumnName="ROLECODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

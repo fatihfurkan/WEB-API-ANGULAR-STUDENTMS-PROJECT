@@ -1,0 +1,38 @@
+[
+  {
+    "text": "Anasayfa",
+    "heading": "true",
+    "icon": "icon-home",
+    "translate": "Anasayfa"
+  },
+  {
+    "text": "Dashboard",
+    "sref": "app.dashboard",
+    "icon": "icon-speedometer",
+    "translate": "sidebar.nav.DASHBOARD"
+  },
+  {
+    "icon": "icon-rocket",
+    "text": "Admin", 
+    "sref": "app.user-save",
+    "translate": "Admin" 
+  },
+  {
+    "icon": "icon-graduation",
+    "text": "Öğretmen", 
+    "sref": "app.teacher", 
+    "translate": "Öğretmen"
+  },
+  {
+    "icon": "icon-users",
+    "text": "Öğrenci", 
+    "sref": "app.student-detail", 
+    "translate": "Öğrenci"
+  },
+  {
+    "icon": "icon-logout",
+    "text": "Çıkış", 
+    "sref": "page.loginPage", 
+    "translate": "Çıkış"
+  }
+]

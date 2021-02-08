@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentMSModelStoreContainer" CdmEntityContainer="StudentMSEntities1">
+    <EntitySetMapping Name="COURSEs">
+      <EntityTypeMapping TypeName="StudentMSModel.COURSE">
+        <MappingFragment StoreEntitySet="COURSE">
+          <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+          <ScalarProperty Name="FEES" ColumnName="FEES" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLEs">
+      <EntityTypeMapping TypeName="StudentMSModel.ROLE">
+        <MappingFragment StoreEntitySet="ROLE">
+          <ScalarProperty Name="ROLECODE" ColumnName="ROLECODE" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEACHER_COURSE_DETAIL">
+      <EntityTypeMapping TypeName="StudentMSModel.TEACHER_COURSE_DETAIL">
+        <MappingFragment StoreEntitySet="TEACHER_COURSE_DETAIL">
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="CONTENTDETAIL" ColumnName="CONTENTDETAIL" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="StudentMSModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="ROLEREF" ColumnName="ROLEREF" />
+          <ScalarProperty Name="CREATIONDATE" ColumnName="CREATIONDATE" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="IDNUMBER" ColumnName="IDNUMBER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_COURSE">
+      <EntityTypeMapping TypeName="StudentMSModel.USER_COURSE">
+        <MappingFragment StoreEntitySet="USER_COURSE">
+          <ScalarProperty Name="COURSEID" ColumnName="COURSEID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetCourseUserDetail" FunctionName="StudentMSModel.Store.GetCourseUserDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StudentMSModel.GetCourseUserDetail_Result">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCourseContent" FunctionName="StudentMSModel.Store.GetCourseContent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StudentMSModel.GetCourseContent_Result">
+          <ScalarProperty Name="COURSENAME" ColumnName="COURSENAME" />
+          <ScalarProperty Name="CONTENTDETAIL" ColumnName="CONTENTDETAIL" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserInfo" FunctionName="StudentMSModel.Store.GetUserInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StudentMSModel.GetUserInfo_Result">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="CREATIONDATE" ColumnName="CREATIONDATE" />
+          <ScalarProperty Name="ROLEREF" ColumnName="ROLEREF" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+          <ScalarProperty Name="ROLECODE" ColumnName="ROLECODE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

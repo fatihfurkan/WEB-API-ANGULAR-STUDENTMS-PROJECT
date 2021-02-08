@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COURSE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="FEES" Type="int" />
+    <Property Name="DURATION" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ROLENAME" Type="varchar" MaxLength="500" />
+    <Property Name="ROLECODE" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TEACHER_COURSE_DETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="COURSEID" Type="uniqueidentifier" />
+    <Property Name="USERID" Type="uniqueidentifier" />
+    <Property Name="CONTENTDETAIL" Type="varchar(max)" />
+    <Property Name="LINK" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IDNUMBER" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="500" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="500" />
+    <Property Name="ADDRESS" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE" Type="varchar" MaxLength="500" />
+    <Property Name="CREATIONDATE" Type="datetime" />
+    <Property Name="ROLEREF" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="USER_COURSE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USERID" Type="uniqueidentifier" />
+    <Property Name="COURSEID" Type="uniqueidentifier" />
+  </EntityType>
+  <Function Name="GetCourseContent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COURSEID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="GetCourseUserDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COURSEID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="StudentMSModelStoreContainer">
+    <EntitySet Name="COURSE" EntityType="Self.COURSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEACHER_COURSE_DETAIL" EntityType="Self.TEACHER_COURSE_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_COURSE" EntityType="Self.USER_COURSE" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="app/js/base.js"></script>
+    <script src="app/js/ngcontroller.js"></script>
+    <link rel="stylesheet" href="app/css/app.css" data-ng-if="!app.layout.isRTL">
+    <link rel="stylesheet" href="app/css/app-rtl.css" data-ng-if="app.layout.isRTL">
+    <title></title>
+</head>
+<body ng-app="sms" ng-controller="studentCntrl" >
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Data Tables |
+                    <small>Zero Configuration</small>
+                </div>
+                <div class="panel-body">
+                    <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th class="sort-numeric">Engine version</th>
+                                <th class="sort-alpha">CSS grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX" ng-repeat="x in student">
+                                <td>{{x.ID}}</td>
+                                <td>{{x.ID}}</td>
+                                <td>{{x.ID}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
